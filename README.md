@@ -1,18 +1,38 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Product Catalog Viewer
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+A lightweight Salesforce application that demonstrates core Salesforce development concepts including Apex, Lightning Web Components, and API integration.
 
-## How Do You Plan to Deploy Your Changes?
+## Project Overview
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+This app provides a modern interface for viewing and filtering Salesforce products, with a simulated external inventory system integration. It's designed to showcase fundamental Salesforce development skills in a minimal, clean implementation.
 
-## Configure Your Salesforce DX Project
+## Technologies Used
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+- **Apex:** Server-side controller logic
+- **Lightning Web Components (LWC):** Modern UI framework
+- **SOQL:** Database queries
+- **REST API:** Simulated external service integration
+- **Salesforce Lightning Design System (SLDS):** UI styling
 
-## Read All About It
+## Features
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+- Display products from the standard Salesforce Product2 object
+- Filter products by category
+- Simulate external API calls to check inventory status
+- Responsive grid layout for product cards
+- Loading state management
+
+## Installation
+
+1. Clone this repository
+2. Deploy to a Salesforce org using Salesforce CLI:
+   ```bash
+   sf project deploy start
+   ```
+3. Create test data (products with different categories)
+4. Access the app through the "Product Catalog" tab in the navigation
+
+## Screenshots
+
+![app screenshot](<appScreenshot.png>)
+
