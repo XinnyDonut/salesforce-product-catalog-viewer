@@ -1,0 +1,68 @@
+<template>
+  <div class="slds-card">
+      <!-- Header -->
+      <div class="slds-card__header slds-grid">
+          <h2 class="slds-card__header-title slds-text-heading_medium">
+              Product Catalog
+          </h2>
+          
+          <!-- Category Filter -->
+          <div class="slds-no-flex slds-m-left_medium">
+              <lightning-combobox
+                  label="Filter by Category"
+                  value={selectedCategory}
+                  options={categoryOptions}
+                  onchange={handleCategoryChange}>
+              </lightning-combobox>
+          </div>
+      </div>
+      
+      <!-- Body -->
+      <div class="slds-card__body">
+          <!-- Loading spinner -->
+          <template if:true={isLoading}>
+              <lightning-spinner alternative-text="Loading products" size="medium"></lightning-spinner>
+          </template>
+          
+          <!-- Product Grid -->
+          <div class="slds-grid slds-gutters slds-wrap">
+              <template for:each={products} for:item="product">
+                  <div key={product.Id} class="slds-col slds-size_1-of-3 slds-p-around_small">
+                      <div class="slds-box slds-box_x-small slds-m-around_x-small product-card">
+                          <p class="slds-text-heading_small">{product.Name}</p>
+                          <p class="slds-text-body_small">{product.Description}</p>
+                          <p class="slds-text-body_small">Category: {product.Family}</p>
+                          <p class="slds-text-body_small">Product Code: {product.ProductCode}</p>
+                          
+                          <!-- Inventory Status (from external service) -->
+                          <div class="slds-m-top_small">
+                              <template if:true={product.inventoryStatus}>
+                                  <p class="slds-text-body_small">
+                                      Status: {product.inventoryStatus.status}
+                                  </p>
+                                  <p class="slds-text-body_small">
+                                      Stock: {product.inventoryStatus.inventory}
+                                  </p>
+                              </template>
+                              <template if:false={product.inventoryStatus}>
+                                  <lightning-button 
+                                      label="Check Inventory" 
+                                      onclick={checkInventory} 
+                                      data-id={product.Id}>
+                                  </lightning-button>
+                              </template>
+                          </div>
+                      </div>
+                  </div>
+              </template>
+          </div>
+          
+          <!-- No results message -->
+          <template if:true={noProducts}>
+              <div class="slds-text-align_center slds-m-around_medium">
+                  No products found in this category.
+              </div>
+          </template>
+      </div>
+  </div>
+</template>
